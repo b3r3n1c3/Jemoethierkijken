@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="DataGrid Tutorial" Background="Transparent" Height="800" Width="800">
     <Grid>
-        <DataGrid x:Name="DataGrid1" Margin="10,48,10,398" SelectionChanged="DataGrid_SelectionChanged">
+        <DataGrid x:Name="DataGrid1" Margin="10,54,10,392" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Team Name" Binding="{Binding TeamName}" Width="*"/>
                 <DataGridTextColumn Header="Start Year" Binding="{Binding StartYear}" Width="*"/>
@@ -18,7 +18,10 @@
         <TextBox x:Name="AddStartYear" HorizontalAlignment="Left" Margin="10,472,0,0" Text="Start Year" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Foreground="Aqua" Margin="10,410,0,0" Text="Add A New Team" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Foreground="Aqua" Margin="265,410,0,0" Text="Delete a Team" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <ComboBox x:Name="CB1" HorizontalAlignment="Left" Margin="265,441,0,0" VerticalAlignment="Top" Width="120" >
+        </ComboBox>
+        <Button x:Name="DeleteTeamButton" Content="Delete" HorizontalAlignment="Left" Margin="265,504,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.48,0.052" Click="DeleteTeamButton_Click"/>
 
     </Grid>
-    
+
 </Window>

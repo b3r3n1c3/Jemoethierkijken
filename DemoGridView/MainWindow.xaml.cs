@@ -35,13 +35,12 @@ namespace DemoGridView
 
             DataGrid1.Items.Add(Navi);
 
+
             Team Nip = new Team();
             Nip.TeamName = "Ninjas in Pyjama's";
             Nip.StartYear = 2000;
 
             DataGrid1.Items.Add(Nip);
-
-
 
             Team Astralis = new Team();
             Astralis.TeamName = "Astralis";
@@ -49,19 +48,12 @@ namespace DemoGridView
 
             DataGrid1.Items.Add(Astralis);
 
-
-            Person Person2 = new Person();
-
-            // Add Some Details about Person 
-            /*
-            Person2.Name = "Sally";
-            Person2.PersonId = 2;
-            Person2.LastName = "Mae";
-            Person2.Profession = "Profession 2";
-
-            DataGrid1.Items.Add(Person2);
-            */
-
+            // Add items to Combobox (Dropdown)
+            string var;
+            var = CB1.Text;
+            CB1.Items.Add(Astralis.TeamName);
+            CB1.Items.Add(Nip.TeamName);
+            CB1.Items.Add(Navi.TeamName); 
         }
 
         public class Person
@@ -92,13 +84,19 @@ namespace DemoGridView
             Team tempTeam = new Team();
             tempTeam.StartYear =  int.Parse(AddStartYear.Text);
             tempTeam.TeamName = AddTeamName.Text;
-           // tempPerson.LastName = AddPersonLastName.Text;
-           // tempPerson.Profession = AddPersonProfession.Text;
+            // tempPerson.LastName = AddPersonLastName.Text;
+            // tempPerson.Profession = AddPersonProfession.Text;
 
             DataGrid1.Items.Add(tempTeam);
+            CB1.Items.Add(tempTeam.TeamName);
 
-            Console.WriteLine("Testing");
+        }
 
+        private void DeleteTeamButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Here comes the program for deleting class instances 
+;
+            CB1.Items.Remove(CB1.SelectedItem); 
 
         }
     }
