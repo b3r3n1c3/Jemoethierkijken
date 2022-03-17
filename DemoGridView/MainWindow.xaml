@@ -9,16 +9,16 @@
     <Grid>
         <DataGrid x:Name="DataGrid1" Margin="10,48,10,398" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Person Id" Binding="{Binding PersonId}" Width="200"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200"/>
-                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="200"/>
-                <DataGridTextColumn Header="Profession" Binding="{Binding Profession}" Width="200" />
+                <DataGridTextColumn Header="Team Name" Binding="{Binding TeamName}" Width="*"/>
+                <DataGridTextColumn Header="Start Year" Binding="{Binding StartYear}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="AddPersonButton" Content="Add new Person" HorizontalAlignment="Left" Margin="370,569,0,0" VerticalAlignment="Top" Click="AddNewPersonButton_Clicked"/>
-        <TextBox x:Name="AddPersonId" HorizontalAlignment="Left" Margin="355,467,0,0" Text="ID" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="AddPersonName" HorizontalAlignment="Left" Margin="355,490,0,0" Text="Name" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="AddPersonLastName" HorizontalAlignment="Left" Margin="355,513,0,0" Text="Last Name" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="AddPersonProfession" HorizontalAlignment="Left" Margin="355,536,0,0" Text="Profession" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="AddNewTeamButton" Content="Add new Team" HorizontalAlignment="Left" Margin="10,504,0,0" VerticalAlignment="Top" Click="AddNewTeamButton_Clicked"/>
+        <TextBox x:Name="AddTeamName" HorizontalAlignment="Left" Margin="10,441,0,0" Text="Team Name" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="AddStartYear" HorizontalAlignment="Left" Margin="10,472,0,0" Text="Start Year" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Foreground="Aqua" Margin="10,410,0,0" Text="Add A New Team" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Foreground="Aqua" Margin="265,410,0,0" Text="Delete a Team" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
     </Grid>
+    
 </Window>

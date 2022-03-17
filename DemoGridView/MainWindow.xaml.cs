@@ -25,28 +25,42 @@ namespace DemoGridView
         public MainWindow()
         {
             InitializeComponent();
-            // Create a new Person Record 
-            // Instatiate a new Person Record and give it information
-            Person Person1 = new Person();
+            // Create a new Team Record 
+            // Instatiate a new Team Record and give it information
+            Team Navi = new Team();
 
-            // Add Some Details about Person 
-            Person1.Name = "Ryan";
-            Person1.PersonId = 1;
-            Person1.LastName = "Richards";
-            Person1.Profession = "Profession 1";
+            // Add Some Details about Team
+            Navi.TeamName = "Natus Vincere";
+            Navi.StartYear = 2009;
 
+            DataGrid1.Items.Add(Navi);
+
+            Team Nip = new Team();
+            Nip.TeamName = "Ninjas in Pyjama's";
+            Nip.StartYear = 2000;
+
+            DataGrid1.Items.Add(Nip);
+
+
+
+            Team Astralis = new Team();
+            Astralis.TeamName = "Astralis";
+            Astralis.StartYear = 2016;
+
+            DataGrid1.Items.Add(Astralis);
 
 
             Person Person2 = new Person();
 
             // Add Some Details about Person 
+            /*
             Person2.Name = "Sally";
             Person2.PersonId = 2;
             Person2.LastName = "Mae";
             Person2.Profession = "Profession 2";
 
-            DataGrid1.Items.Add(Person1);
             DataGrid1.Items.Add(Person2);
+            */
 
         }
 
@@ -59,6 +73,13 @@ namespace DemoGridView
 
         }
 
+        public class Team
+        {
+            public string TeamName { get; set; }
+            public int StartYear { get; set; }
+        }
+
+
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -66,15 +87,15 @@ namespace DemoGridView
         }
 
         // Add new Person button was clicked
-        private void AddNewPersonButton_Clicked(object sender, RoutedEventArgs e)
+        private void AddNewTeamButton_Clicked(object sender, RoutedEventArgs e)
         {
-            Person tempPerson = new Person();
-            tempPerson.PersonId =  int.Parse(AddPersonId.Text);
-            tempPerson.Name = AddPersonName.Text;
-            tempPerson.LastName = AddPersonLastName.Text;
-            tempPerson.Profession = AddPersonProfession.Text;
+            Team tempTeam = new Team();
+            tempTeam.StartYear =  int.Parse(AddStartYear.Text);
+            tempTeam.TeamName = AddTeamName.Text;
+           // tempPerson.LastName = AddPersonLastName.Text;
+           // tempPerson.Profession = AddPersonProfession.Text;
 
-            DataGrid1.Items.Add(tempPerson);
+            DataGrid1.Items.Add(tempTeam);
 
             Console.WriteLine("Testing");
 
