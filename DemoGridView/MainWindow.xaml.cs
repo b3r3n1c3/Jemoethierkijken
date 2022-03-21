@@ -13,62 +13,56 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace DemoGridView
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
-
+        public List<Team> _Team;
 
         public MainWindow()
         {
             InitializeComponent();
             // Create a new Team Record 
             // Instatiate a new Team Record and give it information
-            Team Navi = new Team();
-
             // Add Some Details about Team
+            Team Navi = new Team();
             Navi.TeamName = "Natus Vincere";
             Navi.StartYear = 2009;
-
-            DataGrid1.Items.Add(Navi);
-
 
             Team Nip = new Team();
             Nip.TeamName = "Ninjas in Pyjama's";
             Nip.StartYear = 2000;
 
-            DataGrid1.Items.Add(Nip);
-
             Team Astralis = new Team();
             Astralis.TeamName = "Astralis";
             Astralis.StartYear = 2016;
 
-            DataGrid1.Items.Add(Astralis);
+            // Add a list with classes
+            _Team = new List<Team>();
+            _Team.Add(Navi);
+            _Team.Add(Nip);
+            _Team.Add(Astralis);
 
-            // Add items to Combobox (Dropdown)
-            string var;
-            var = CB1.Text;
-            CB1.Items.Add(Astralis.TeamName);
-            CB1.Items.Add(Nip.TeamName);
-            CB1.Items.Add(Navi.TeamName); 
-        }
 
-        public class Person
-        {
-            public int PersonId { get; set; }
-            public string Name { get; set; }
-            public string LastName { get; set; }
-            public string Profession { get; set; }
+            DataGrid1.Items.Add(_Team[0]);
+            DataGrid1.Items.Add(_Team[1]);
+            DataGrid1.Items.Add(_Team[2]);
 
-        }
+            // Add items to Combobox for Delete (Dropdown)
 
-        public class Team
-        {
-            public string TeamName { get; set; }
-            public int StartYear { get; set; }
+            CB1.Items.Add(_Team[0].TeamName);
+            CB1.Items.Add(_Team[1].TeamName);
+            CB1.Items.Add(_Team[2].TeamName);
+
+            //Add items to combobox for Update (Dropdown)
+            CB2.Items.Add(_Team[0].TeamName);
+            CB2.Items.Add(_Team[1].TeamName);
+            CB2.Items.Add(_Team[2].TeamName);
+
+
+
         }
 
 
@@ -84,20 +78,33 @@ namespace DemoGridView
             Team tempTeam = new Team();
             tempTeam.StartYear =  int.Parse(AddStartYear.Text);
             tempTeam.TeamName = AddTeamName.Text;
-            // tempPerson.LastName = AddPersonLastName.Text;
-            // tempPerson.Profession = AddPersonProfession.Text;
 
+            // Add Team To the List _Teams
+            _Team.Add(tempTeam);
             DataGrid1.Items.Add(tempTeam);
             CB1.Items.Add(tempTeam.TeamName);
+            CB2.Items.Add(tempTeam.TeamName);
+
 
         }
 
         private void DeleteTeamButton_Click(object sender, RoutedEventArgs e)
         {
             // Here comes the program for deleting class instances 
-;
-            CB1.Items.Remove(CB1.SelectedItem); 
 
+            int tempIx = CB1.SelectedIndex;
+
+            DataGrid1.Items.Remove(_Team[tempIx]);
+            CB1.Items.Remove(CB1.SelectedValue);
+
+        }
+
+        private void TeamInfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigate to Window with teeam info 
+            var newForm = new TeamInfo();
+            newForm.Show();
+            this.Close(); 
         }
     }
 }

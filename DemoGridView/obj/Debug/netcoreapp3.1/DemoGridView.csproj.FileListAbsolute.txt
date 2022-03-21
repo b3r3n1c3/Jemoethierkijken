@@ -38,3 +38,5 @@ C:\Users\Joffrey\source\repos\DemoGridView\Jemoethierkijken\DemoGridView\obj\Deb
 C:\Users\Joffrey\source\repos\DemoGridView\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.dll
 C:\Users\Joffrey\source\repos\DemoGridView\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.pdb
 C:\Users\Joffrey\source\repos\DemoGridView\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.genruntimeconfig.cache
+C:\Users\Joffrey\source\repos\DemoGridView\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\TeamInfo.g.cs
+C:\Users\Joffrey\source\repos\DemoGridView\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\TeamInfo.baml

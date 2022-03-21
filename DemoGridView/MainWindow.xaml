@@ -17,11 +17,17 @@
         <TextBox x:Name="AddTeamName" HorizontalAlignment="Left" Margin="10,441,0,0" Text="Team Name" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="AddStartYear" HorizontalAlignment="Left" Margin="10,472,0,0" Text="Start Year" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Foreground="Aqua" Margin="10,410,0,0" Text="Add A New Team" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Foreground="Aqua" Margin="265,410,0,0" Text="Delete a Team" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <ComboBox x:Name="CB1" HorizontalAlignment="Left" Margin="265,441,0,0" VerticalAlignment="Top" Width="120" >
+        <TextBlock HorizontalAlignment="Left" Foreground="Aqua" Margin="150,410,0,0" Text="Delete a Team" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <ComboBox x:Name="CB1" HorizontalAlignment="Left" Margin="150
+                  ,441,0,0" VerticalAlignment="Top" Width="120" >
         </ComboBox>
-        <Button x:Name="DeleteTeamButton" Content="Delete" HorizontalAlignment="Left" Margin="265,504,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.48,0.052" Click="DeleteTeamButton_Click"/>
-
+        <Button x:Name="DeleteTeamButton" Content="Delete" HorizontalAlignment="Left" Margin="150
+                ,504,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.48,0.052" Click="DeleteTeamButton_Click"/>
+        <Border BorderThickness="1" BorderBrush="Black" Margin="0,10,0,-10"/>
+        <Button  x:Name="TeamInfoButton" Content="Team member info" HorizontalAlignment="Left" Margin="597,438,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.265,-1.977" Height="21" Width="128" Click="TeamInfoButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" Height="26"  Foreground="Aqua" Margin="300,410,0,0" Text="Update a team" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <ComboBox x:Name="CB2" HorizontalAlignment="Left" Margin="300,441,0,0" VerticalAlignment="Top" Width="120" >
+        </ComboBox>
     </Grid>
 
 </Window>
