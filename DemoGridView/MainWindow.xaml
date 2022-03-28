@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoGridView"
         mc:Ignorable="d"
-        Title="DataGrid Tutorial" Background="Transparent" Height="800" Width="800">
-    <Grid>
-        <DataGrid x:Name="DataGrid1" Margin="10,54,10,392" SelectionChanged="DataGrid_SelectionChanged">
+        Title="DataGrid Tutorial" Background="Transparent" Height="824" Width="800">
+    <Grid Margin="0,0,0,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="425*"/>
+            <ColumnDefinition Width="376*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="DataGrid1" Margin="10,24,10,422" SelectionChanged="DataGrid_SelectionChanged" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Team Name" Binding="{Binding TeamName}" Width="*"/>
                 <DataGridTextColumn Header="Start Year" Binding="{Binding StartYear}" Width="*"/>
@@ -23,11 +27,18 @@
         </ComboBox>
         <Button x:Name="DeleteTeamButton" Content="Delete" HorizontalAlignment="Left" Margin="150
                 ,504,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.48,0.052" Click="DeleteTeamButton_Click"/>
-        <Border BorderThickness="1" BorderBrush="Black" Margin="0,10,0,-10"/>
-        <Button  x:Name="TeamInfoButton" Content="Team member info" HorizontalAlignment="Left" Margin="597,438,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.265,-1.977" Height="21" Width="128" Click="TeamInfoButton_Click"/>
+
+        <Button  x:Name="TeamInfoButton" Content="Team member info" HorizontalAlignment="Left" Margin="174,441,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.265,-1.977" Height="21" Width="128" Click="TeamInfoButton_Click" Grid.Column="1"/>
+        <Button x:Name="UpdateTeamButton" Content="Update team" Margin="394,549,282,207" Click="UpdateTeamButton_Click" Grid.ColumnSpan="2"/>
         <TextBlock HorizontalAlignment="Left" Height="26"  Foreground="Aqua" Margin="300,410,0,0" Text="Update a team" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
-        <ComboBox x:Name="CB2" HorizontalAlignment="Left" Margin="300,441,0,0" VerticalAlignment="Top" Width="120" >
-        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Height="26"  Foreground="Aqua" Margin="300,437,0,0" Text="Select a team: " TextWrapping="Wrap" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.49,0.828"/>
+        <TextBlock HorizontalAlignment="Left" Height="26"  Foreground="Aqua" Margin="300,472,0,0" Text="Team name: " TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <TextBlock HorizontalAlignment="Left" Height="26"  Foreground="Aqua" Margin="300,501,0,0" Text="Start Year: " TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <ComboBox x:Name="CB2" HorizontalAlignment="Left" Margin="394,441,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" />
+        <TextBox x:Name="TB_Update_TN"  TextWrapping="Wrap" Margin="395,472,285,0" VerticalAlignment="Top" Width="120" Height="18" Grid.ColumnSpan="2" />
+        <TextBox x:Name="TB_Update_SY"  TextWrapping="Wrap" Margin="395,504,285,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" />
+        <TextBlock x:Name="Update_Error_TN" Text=""  Foreground="Aqua" TextWrapping="Wrap" Margin="300,582,234,169" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="Update_Error_SY" Text=""  Foreground="Aqua" TextWrapping="Wrap" Margin="300,614,234,137" Grid.ColumnSpan="2"/>
     </Grid>
 
 </Window>

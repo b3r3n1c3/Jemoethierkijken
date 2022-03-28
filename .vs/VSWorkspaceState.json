@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DemoGridView"
   ],
-  "SelectedNode": "\\DemoGridView.sln",
+  "SelectedNode": "\\DemoGridView\\TeamMember.cs",
   "PreviewInSolutionExplorer": false
 }

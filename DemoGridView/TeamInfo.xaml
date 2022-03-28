@@ -7,15 +7,39 @@
         mc:Ignorable="d"
         Title="TeamInfo" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="DataGrid2" HorizontalAlignment="Center" Height="246" VerticalAlignment="Top" Width="780" Margin="0,10,0,0">
+        <DataGrid x:Name="DataGrid2" HorizontalAlignment="Center" Height="246" VerticalAlignment="Top" Width="780" Margin="0,10,0,0" SelectionChanged="DataGrid2_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Team Name" Binding="{Binding TeamName}" Width="*"/>
-                <DataGridTextColumn Header="Start Year" Binding="{Binding StartYear}" Width="*"/>
+                <DataGridTextColumn Header="Team Name" Binding="{Binding Team.TeamName}" Width="*"/>
+                <DataGridTextColumn Header="Start Year" Binding="{Binding Team.StartYear}" Width="*"/>
                 <DataGridTextColumn Header="Teammember Member Name" Binding="{Binding MemberName}" Width="*"/>
                 <DataGridTextColumn Header="Teammember Age" Binding="{Binding MemberAge}" Width="*"/>
                 <DataGridTextColumn Header="In Game Name" Binding="{Binding MemberInGameName}" Width="*"/>
             </DataGrid.Columns>
 
         </DataGrid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,261,0,0" Text="Add a teammember: " TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="279,261,0,0" Text="Delete a teammember: " TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="448,260,0,0" Text="Update a teammember: " TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Height="20" Margin="144,278,0,0" x:Name="CB_Add_TN" VerticalAlignment="Top" Width="120"/>
+        <ComboBox HorizontalAlignment="Left" Height="20" Margin="280,278,0,0" x:Name="CB_Delete_TM" VerticalAlignment="Top" Width="153"/>
+        <ComboBox HorizontalAlignment="Left" Height="20" Margin="448,278,0,0" x:Name="CB_Update_TM" VerticalAlignment="Top" Width="153"/>
+        <TextBox x:Name="TBox_Add_MN" HorizontalAlignment="Left" Margin="144,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBox_Add_Age" HorizontalAlignment="Left" Margin="144,331,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBox_Add_IGN" HorizontalAlignment="Left" Margin="144,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBox_Update_MN" HorizontalAlignment="Left" Margin="574,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBox_Update_Age" HorizontalAlignment="Left" Margin="574,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBox_Update_IGN" HorizontalAlignment="Left" Margin="574,354,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="TB_Add_Team" HorizontalAlignment="Left" Margin="10,282,0,0" Text="Team:" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.476,0.41"/>
+        <TextBlock x:Name="TB_Add_MN" HorizontalAlignment="Left" Margin="10,308,0,0" Text="Teammember Name:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TB_Update_MN" HorizontalAlignment="Left" Margin="448,308,0,0" Text="Teammember Name:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TB_Add_Age" HorizontalAlignment="Left" Margin="10,334,0,0" Text="Teammember Age:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TB_Update_Age" HorizontalAlignment="Left" Margin="448,334,0,0" Text="Teammember Age:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TB_Add_IGN" HorizontalAlignment="Left" Margin="10,355,0,0" Text="In Game Name:" TextWrapping="Wrap" VerticalAlignment="Top" Width="109"/>
+        <TextBlock x:Name="TB_Update_IGN" HorizontalAlignment="Left" Margin="448,355,0,0" Text="In Game Name:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="BT_Add_TM" Content="Add Teammember" HorizontalAlignment="Left" Margin="144,378,0,0" VerticalAlignment="Top" Width="120" Click="BT_Add_TM_Click"/>
+        <Button x:Name="BT_Delete_TM" Content="Delete Teammember" HorizontalAlignment="Left" Margin="283,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.126,-0.349" Width="120" Click="BT_Delete_TM_Click"/>
+        <Button x:Name="BT_Update_TM" Content="Update Teammember" HorizontalAlignment="Left" Margin="448,378,0,0" VerticalAlignment="Top" Width="129"/>
+        <Button Content="Go back" HorizontalAlignment="Left" Height="19" Margin="700,263,0,0" VerticalAlignment="Top" Width="80" Click="Button_Click"/>
+
     </Grid>
 </Window>
