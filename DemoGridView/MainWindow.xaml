@@ -27,7 +27,7 @@
         <Button x:Name="DeleteTeamButton" Content="Delete" HorizontalAlignment="Left" Margin="150
                 ,504,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.48,0.052" Click="DeleteTeamButton_Click"/>
         <Button  x:Name="TeamInfoButton" Content="Team member info" HorizontalAlignment="Left" Margin="174,441,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.265,-1.977" Height="21" Width="128" Click="TeamInfoButton_Click" Grid.Column="1"/>
-        <Button x:Name="UpdateTeamButton" Content="Update team" Margin="394,549,282,207" Click="UpdateTeamButton_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="UpdateTeamButton" Content="Update team" Margin="394,549,282,207" Click="UpdateTeamButton_Click" VerticalAlignment="Top"  Grid.ColumnSpan="2"/>
         <TextBlock HorizontalAlignment="Left" Height="26"  Foreground="Aqua" Margin="300,410,0,0" Text="Update a team" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
         <TextBlock HorizontalAlignment="Left" Height="26"  Foreground="Aqua" Margin="300,437,0,0" Text="Select a team: " TextWrapping="Wrap" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.49,0.828"/>
         <TextBlock HorizontalAlignment="Left" Height="26"  Foreground="Aqua" Margin="300,472,0,0" Text="Team name: " TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
