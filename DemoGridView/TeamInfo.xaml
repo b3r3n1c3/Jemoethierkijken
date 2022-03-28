@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoGridView"
         mc:Ignorable="d"
-        Title="TeamInfo" Height="450" Width="800">
-    <Grid>
+        Title="TeamInfo" Height="627" Width="800">
+    <Grid Margin="0,0,0,129">
         <DataGrid x:Name="DataGrid2" HorizontalAlignment="Center" Height="246" VerticalAlignment="Top" Width="780" Margin="0,10,0,0" SelectionChanged="DataGrid2_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Team Name" Binding="{Binding Team.TeamName}" Width="*"/>
@@ -41,6 +41,8 @@
         <Button x:Name="BT_Update_TM" Content="Update Teammember" HorizontalAlignment="Left" Margin="448,378,0,0" VerticalAlignment="Top" Width="129" Click="BT_Update_TM_Click"/>
         <Button Content="Go back" HorizontalAlignment="Left" Height="19" Margin="700,263,0,0" VerticalAlignment="Top" Width="80" Click="Button_Click"/>
         <TextBlock x:Name="TB_Update_Error" HorizontalAlignment="Left" Height="21" Margin="448,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246"/>
+        <TextBlock x:Name="TB_Update_Error_Age" HorizontalAlignment="Left" Height="21" Margin="448,429,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246"/>
+        <TextBlock x:Name="TB_Update_Error_IGN" HorizontalAlignment="Left" Height="21" Margin="448,455,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246"/>
 
     </Grid>
 </Window>

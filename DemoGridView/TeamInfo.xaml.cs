@@ -136,6 +136,11 @@ namespace DemoGridView
 
         private void BT_Update_TM_Click(object sender, RoutedEventArgs e)
         {
+            TB_Update_Error.Text = "";
+            TB_Update_Error_Age.Text = "";
+            TB_Update_Error_IGN.Text = "";
+
+
             // Check if teammember is selected in Combobox
             if (string.IsNullOrEmpty(CB_Update_TM.Text))
             {
@@ -144,7 +149,58 @@ namespace DemoGridView
 
             else
             {
-                
+                // Check if teammember name is filled
+                if (string.IsNullOrEmpty(TBox_Update_MN.Text))
+                {
+                    TB_Update_Error.Text = "No name inserted. No update";
+                }
+
+                else
+                {
+                    // Update Teammember Name 
+                    int tempIx = CB_Update_TM.SelectedIndex;
+                    _Teammember[tempIx].MemberName = TBox_Update_MN.Text;
+                    //Refresh Values
+                    DataGrid2.Items.Refresh();
+                }
+
+                // Check if teammember age is filled 
+                if (string.IsNullOrEmpty(TBox_Update_Age.Text))
+                {
+                    TB_Update_Error_Age.Text = "No age inserted. No update";
+                }
+
+                else
+                {
+                    // Update Teammember Age
+                    int tempIx = CB_Update_TM.SelectedIndex;
+                    _Teammember[tempIx].MemberAge = int.Parse(TBox_Update_Age.Text);
+
+                    //Refresh Values
+                    DataGrid2.Items.Refresh();
+                }
+
+                // Check if teammember IGN is filled 
+                if (string.IsNullOrEmpty(TBox_Update_IGN.Text))
+                {
+                    TB_Update_Error_IGN.Text = "No In Game Name inserted. No Update"; 
+                }
+
+                else
+                {
+                    // Update Teammember Ingame name 
+                    int tempIx = CB_Update_TM.SelectedIndex;
+                    _Teammember[tempIx].MemberInGameName = TBox_Update_IGN.Text;
+
+                    //Refresh Values
+                    DataGrid2.Items.Refresh();
+
+                    CB_Delete_TM.Items.Remove(CB_Update_TM.SelectedValue);
+                    CB_Delete_TM.Items.Add(_Teammember[tempIx].MemberInGameName);
+
+                    CB_Update_TM.Items.Remove(CB_Update_TM.SelectedValue);
+                    CB_Update_TM.Items.Add(_Teammember[tempIx].MemberInGameName);
+                }
             }
         }
     }
