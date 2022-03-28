@@ -38,8 +38,9 @@
         <TextBlock x:Name="TB_Update_IGN" HorizontalAlignment="Left" Margin="448,355,0,0" Text="In Game Name:" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Button x:Name="BT_Add_TM" Content="Add Teammember" HorizontalAlignment="Left" Margin="144,378,0,0" VerticalAlignment="Top" Width="120" Click="BT_Add_TM_Click"/>
         <Button x:Name="BT_Delete_TM" Content="Delete Teammember" HorizontalAlignment="Left" Margin="283,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.126,-0.349" Width="120" Click="BT_Delete_TM_Click"/>
-        <Button x:Name="BT_Update_TM" Content="Update Teammember" HorizontalAlignment="Left" Margin="448,378,0,0" VerticalAlignment="Top" Width="129"/>
+        <Button x:Name="BT_Update_TM" Content="Update Teammember" HorizontalAlignment="Left" Margin="448,378,0,0" VerticalAlignment="Top" Width="129" Click="BT_Update_TM_Click"/>
         <Button Content="Go back" HorizontalAlignment="Left" Height="19" Margin="700,263,0,0" VerticalAlignment="Top" Width="80" Click="Button_Click"/>
+        <TextBlock x:Name="TB_Update_Error" HorizontalAlignment="Left" Height="21" Margin="448,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246"/>
 
     </Grid>
 </Window>

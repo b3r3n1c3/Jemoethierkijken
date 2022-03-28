@@ -79,16 +79,21 @@ namespace DemoGridView
             CB_Add_TN.Items.Add(_Team[1].TeamName);
             CB_Add_TN.Items.Add(_Team[2].TeamName);
 
-            // Add items to Comboxbox for deleting teammember
+            // Add items to Comboxbox for deleting teammember (showing IGN)
             CB_Delete_TM.Items.Add(_Teammember[0].MemberInGameName);
             CB_Delete_TM.Items.Add(_Teammember[1].MemberInGameName);
             CB_Delete_TM.Items.Add(_Teammember[2].MemberInGameName);
 
+            // Add items to Combobox for updating teammembers (showing IGN)
+            CB_Update_TM.Items.Add(_Teammember[0].MemberInGameName);
+            CB_Update_TM.Items.Add(_Teammember[1].MemberInGameName);
+            CB_Update_TM.Items.Add(_Teammember[2].MemberInGameName);
 
         }
 
         private void BT_Add_TM_Click(object sender, RoutedEventArgs e)
         {
+            // This is the code for adding a Teammember
             TeamMember tempTeammember = new TeamMember();
             int tempInt = CB_Add_TN.SelectedIndex;
             tempTeammember.Team = _Team[tempInt];
@@ -100,15 +105,20 @@ namespace DemoGridView
             _Teammember.Add(tempTeammember);
             DataGrid2.Items.Add(tempTeammember);
 
-            // Add Teammember to Combobox _Teammembers
+            // Add Teammember to Combobox for deleting Teammembers
             CB_Delete_TM.Items.Add(tempTeammember.MemberInGameName);
+
+            // Add Teammember to Combobox for updating Teammembers 
+            CB_Update_TM.Items.Add(tempTeammember.MemberInGameName);
 
         }
 
         private void BT_Delete_TM_Click(object sender, RoutedEventArgs e)
         {
+            // This is the code to delete the teammember 
             int tempIx = CB_Delete_TM.SelectedIndex;
             DataGrid2.Items.Remove(_Teammember[tempIx]);
+            CB_Update_TM.Items.Remove(CB_Delete_TM.SelectedValue);
             CB_Delete_TM.Items.Remove(CB_Delete_TM.SelectedValue);
         }
 
@@ -122,6 +132,20 @@ namespace DemoGridView
         private void DataGrid2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void BT_Update_TM_Click(object sender, RoutedEventArgs e)
+        {
+            // Check if teammember is selected in Combobox
+            if (string.IsNullOrEmpty(CB_Update_TM.Text))
+            {
+                TB_Update_Error.Text = "No teammember selected.";
+            }
+
+            else
+            {
+                
+            }
         }
     }
 
