@@ -62,3 +62,5 @@ C:\Users\Ned J\Documents\GitHub\Jemoethierkijken\DemoGridView\obj\Debug\netcorea
 C:\Users\Ned J\Documents\GitHub\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.dll
 C:\Users\Ned J\Documents\GitHub\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.pdb
 C:\Users\Ned J\Documents\GitHub\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.genruntimeconfig.cache
+C:\Users\Joffrey\source\repos\DemoGridView\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\PlayerInfo.g.cs
+C:\Users\Joffrey\source\repos\DemoGridView\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\PlayerInfo.baml

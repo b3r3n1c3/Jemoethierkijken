@@ -1,0 +1,23 @@
+﻿<Window x:Class="DemoGridView.PlayerInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoGridView"
+        mc:Ignorable="d"
+        Title="PlayerInfo" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="DG_Player" Margin="0,0,0,275">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Player Name" Binding="{Binding MemberInGameName}" Width="*"/>
+                <DataGridTextColumn Header="Player Kills" Binding="{Binding Kills}" Width="*"/>
+                <DataGridTextColumn Header="Player Deaths" Binding="{Binding Deaths}"  Width="*"/>
+                <DataGridTextColumn Header="Player KD"  Binding="{Binding KD, StringFormat={}{0:N2}}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox x:Name="CB_Select_Player" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="Player_GetKill" Content="Get Kill" HorizontalAlignment="Left" Margin="157,165,0,0" VerticalAlignment="Top" Click="Player_GetKill_Click"/>
+        <Button x:Name="Player_GetDeath" Content="Get Death" HorizontalAlignment="Left" Margin="227,165,0,0" VerticalAlignment="Top" Click="Player_GetDeath_Click"/>
+        <TextBlock x:Name="TB_PlayerMessage" HorizontalAlignment="Left" Margin="332,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

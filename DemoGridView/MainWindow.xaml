@@ -37,6 +37,7 @@
         <TextBox x:Name="TB_Update_SY"  TextWrapping="Wrap" Margin="395,504,285,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" />
         <TextBlock x:Name="Update_Error_TN" Text=""  Foreground="Aqua" TextWrapping="Wrap" Margin="300,582,234,169" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="Update_Error_SY" Text=""  Foreground="Aqua" TextWrapping="Wrap" Margin="300,614,234,137" Grid.ColumnSpan="2"/>
+        <Button x:Name="BT_PlayerInfo" Content="Player Info" Grid.Column="1" HorizontalAlignment="Left" Margin="174,467,0,0" VerticalAlignment="Top" Click="BT_PlayerInfo_Click" Width="128"/>
     </Grid>
 
 </Window>

@@ -91,9 +91,11 @@ namespace DemoGridView
         {
             // Here comes the program for deleting class instances 
             int tempIx = CB1.SelectedIndex;
+            
             DataGrid1.Items.Remove(_Team[tempIx]);
             CB1.Items.Remove(CB1.SelectedValue);
             CB2.Items.Remove(CB1.SelectedValue);
+            _Team.RemoveAt(tempIx);
             DataGrid1.Items.Refresh();
 
         }
@@ -103,8 +105,17 @@ namespace DemoGridView
             // Navigate to Window with team info 
             var newForm = new TeamInfo();
             newForm.Show();
-            this.Close(); 
+            this.Close();
         }
+        private void BT_PlayerInfo_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigate to Window with Player info 
+            var newForm = new PlayerInfo();
+            newForm.Show();
+            this.Close();
+        }
+
+
 
         private void UpdateTeamButton_Click(object sender, RoutedEventArgs e)
         {
@@ -161,5 +172,7 @@ namespace DemoGridView
 
 
         }
+
+
     }
 }
