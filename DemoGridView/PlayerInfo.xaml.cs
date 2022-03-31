@@ -17,8 +17,7 @@ namespace DemoGridView
     /// </summary>
     public partial class PlayerInfo : Window
     {
-        public List<TeamMember> _Teammember;
-        public List<Team> _Team;
+
         public List<Player> _Player;
 
         public PlayerInfo()
@@ -57,37 +56,46 @@ namespace DemoGridView
             Device.MemberAge = 26;
             Device.MemberInGameName = "dev1ce";
 
-            // Declare Player 
+            // Declare Players 
             Player S1mple = new Player();
             S1mple.MemberInGameName = Simple.MemberInGameName;
             S1mple.Kills = 0;
             S1mple.Deaths = 0;
             S1mple.KD = 0.00F;
 
+            Player Get_Right = new Player();
+            Get_Right.MemberInGameName = GetRight.MemberInGameName;
+            Get_Right.Kills = 0;
+            Get_Right.Deaths = 0;
+            Get_Right.KD = 0.00F;
+
+            Player Dev1ce = new Player();
+            Dev1ce.MemberInGameName = Device.MemberInGameName;
+            Dev1ce.Kills = 0;
+            Dev1ce.Deaths = 0;
+            Dev1ce.KD = 0.00F;
+
             //Add item to List Player 
             _Player = new List<Player>();
             _Player.Add(S1mple);
+            _Player.Add(Get_Right);
+            _Player.Add(Dev1ce);
 
-            // Create list of Teammembers Classes
-            _Teammember = new List<TeamMember>();
-            _Teammember.Add(Simple);
-            _Teammember.Add(GetRight);
-            _Teammember.Add(Device);
-
-            // Add a list with Team classes
-            _Team = new List<Team>();
-            _Team.Add(Navi);
-            _Team.Add(Nip);
-            _Team.Add(Astralis);
 
             // Add data to grid 
             DG_Player.Items.Add(_Player[0]);
+            DG_Player.Items.Add(_Player[1]);
+            DG_Player.Items.Add(_Player[2]);
+
 
             // Add Data to Combobox
             CB_Select_Player.Items.Add(_Player[0].MemberInGameName);
+            CB_Select_Player.Items.Add(_Player[1].MemberInGameName);
+            CB_Select_Player.Items.Add(_Player[2].MemberInGameName);
         }
 
-     public void CalculateKD(float x, float y)
+        // method for calculating the KD of a player
+        public void CalculateKD(float x, float y)
         {
 
             _Player[CB_Select_Player.SelectedIndex].KD = y / x;
@@ -97,6 +105,8 @@ namespace DemoGridView
         private void Player_GetKill_Click(object sender, RoutedEventArgs e)
 
         {
+            TB_PlayerMessage.Text = "";
+
             if (string.IsNullOrEmpty(CB_Select_Player.Text))
             {
                 TB_PlayerMessage.Text = "No player selected.";
