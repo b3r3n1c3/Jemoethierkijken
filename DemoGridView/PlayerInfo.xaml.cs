@@ -87,10 +87,10 @@ namespace DemoGridView
             CB_Select_Player.Items.Add(_Player[0].MemberInGameName);
         }
 
-     public void CalculateKD(int x, int y)
+     public void CalculateKD(float x, float y)
         {
 
-            _Player[CB_Select_Player.SelectedIndex].KD = x / y;
+            _Player[CB_Select_Player.SelectedIndex].KD = y / x;
 
         }
 

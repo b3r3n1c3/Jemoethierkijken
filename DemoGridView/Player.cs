@@ -6,8 +6,8 @@ namespace DemoGridView
 {
     public class Player : TeamMember
     {
-        public int Kills { get; set; }
-        public int Deaths { get; set; }
+        public float Kills { get; set; }
+        public float Deaths { get; set; }
         public float KD { get; set; }
     }
 }
