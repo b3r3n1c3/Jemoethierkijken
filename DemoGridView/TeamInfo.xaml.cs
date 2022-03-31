@@ -120,6 +120,7 @@ namespace DemoGridView
             DataGrid2.Items.Remove(_Teammember[tempIx]);
             CB_Update_TM.Items.Remove(CB_Delete_TM.SelectedValue);
             CB_Delete_TM.Items.Remove(CB_Delete_TM.SelectedValue);
+            _Teammember.RemoveAt(tempIx);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
