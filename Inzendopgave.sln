@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoGridView", "DemoGridView\DemoGridView.csproj", "{20B39D52-6BA1-49D6-AA07-BE0AE865A1DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoGridView", "DemoGridView\DemoGridView.csproj", "{20B39D52-6BA1-49D6-AA07-BE0AE865A1DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -11,14 +11,14 @@
             <ColumnDefinition Width="425*"/>
             <ColumnDefinition Width="376*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="DataGrid1" Margin="10,24,10,422" SelectionChanged="DataGrid_SelectionChanged" Grid.ColumnSpan="2">
+        <DataGrid x:Name="DataGrid1" Margin="10,24,10,422" IsReadOnly="true" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Team Name" Binding="{Binding TeamName}" Width="*"/>
                 <DataGridTextColumn Header="Start Year" Binding="{Binding StartYear}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="AddNewTeamButton" Content="Add new Team" HorizontalAlignment="Left" Margin="10,504,0,0" VerticalAlignment="Top" Click="AddNewTeamButton_Clicked"/>
-        <TextBox x:Name="AddTeamName" HorizontalAlignment="Left" Margin="10,441,0,0" Text="Team Name" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="AddTeamName" HorizontalAlignment="Left" Margin="10,441,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="AddTeamName_TextChanged" Text="Team Name"/>
         <TextBox x:Name="AddStartYear" HorizontalAlignment="Left" Margin="10,472,0,0" Text="Start Year" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Foreground="Aqua" Margin="10,410,0,0" Text="Add A New Team" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Foreground="Aqua" Margin="150,410,0,0" Text="Delete a Team" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -38,6 +38,7 @@
         <TextBlock x:Name="Update_Error_TN" Text=""  Foreground="Aqua" TextWrapping="Wrap" Margin="300,582,234,169" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="Update_Error_SY" Text=""  Foreground="Aqua" TextWrapping="Wrap" Margin="300,614,234,137" Grid.ColumnSpan="2"/>
         <Button x:Name="BT_PlayerInfo" Content="Player Info" Grid.Column="1" HorizontalAlignment="Left" Margin="174,467,0,0" VerticalAlignment="Top" Click="BT_PlayerInfo_Click" Width="128"/>
+        <TextBlock x:Name="TB_Add_Error" Foreground="Aqua" HorizontalAlignment="Left" Margin="10,549,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     </Grid>
 
 </Window>

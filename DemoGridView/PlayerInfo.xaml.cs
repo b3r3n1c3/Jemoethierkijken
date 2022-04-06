@@ -17,8 +17,8 @@ namespace DemoGridView
     /// </summary>
     public partial class PlayerInfo : Window
     {
-
         public List<Player> _Player;
+        public List<Coach> _Coach;
 
         public PlayerInfo()
         {
@@ -75,31 +75,61 @@ namespace DemoGridView
             Dev1ce.Deaths = 0;
             Dev1ce.KD = 0.00F;
 
+            // Declare Coaches 
+            Coach Threat = new Coach();
+            Threat.MemberInGameName = "THREAT";
+            Threat.TeamName = Nip.TeamName;
+            Threat.TacticalTimeouts = 4;
+
+            Coach Glave = new Coach();
+            Glave.MemberInGameName = "gla1ve";
+            Glave.TeamName = Astralis.TeamName;
+            Glave.TacticalTimeouts = 4;
+
+            Coach Blade = new Coach();
+            Blade.MemberInGameName = "B1ad3";
+            Blade.TeamName = Navi.TeamName;
+            Blade.TacticalTimeouts = 4; 
+
+
             //Add item to List Player 
             _Player = new List<Player>();
             _Player.Add(S1mple);
             _Player.Add(Get_Right);
             _Player.Add(Dev1ce);
 
+            //Add item to List Coach
+            _Coach = new List<Coach>();
+            _Coach.Add(Threat);
+            _Coach.Add(Glave);
+            _Coach.Add(Blade);
 
-            // Add data to grid 
+            // Add data to Player grid 
             DG_Player.Items.Add(_Player[0]);
             DG_Player.Items.Add(_Player[1]);
             DG_Player.Items.Add(_Player[2]);
 
 
-            // Add Data to Combobox
+            // Add Data to Player Combobox
             CB_Select_Player.Items.Add(_Player[0].MemberInGameName);
             CB_Select_Player.Items.Add(_Player[1].MemberInGameName);
             CB_Select_Player.Items.Add(_Player[2].MemberInGameName);
+
+            // Add data to Coach grid
+            DG_Coach.Items.Add(_Coach[0]);
+            DG_Coach.Items.Add(_Coach[1]);
+            DG_Coach.Items.Add(_Coach[2]);
+
+            // Add Data to Coach Combobox 
+            CB_Coach_Timeout.Items.Add(_Coach[0].MemberInGameName);
+            CB_Coach_Timeout.Items.Add(_Coach[1].MemberInGameName);
+            CB_Coach_Timeout.Items.Add(_Coach[2].MemberInGameName);
         }
 
         // method for calculating the KD of a player
         public void CalculateKD(float x, float y)
         {
-
             _Player[CB_Select_Player.SelectedIndex].KD = y / x;
-
         }
 
         private void Player_GetKill_Click(object sender, RoutedEventArgs e)
@@ -118,8 +148,7 @@ namespace DemoGridView
                 if ((_Player[CB_Select_Player.SelectedIndex].Kills != 0) || (_Player[CB_Select_Player.SelectedIndex].Deaths != 0))
                 {
                     CalculateKD(_Player[CB_Select_Player.SelectedIndex].Deaths, _Player[CB_Select_Player.SelectedIndex].Kills);
-                    DG_Player.Items.Remove(_Player[CB_Select_Player.SelectedIndex]);
-                    DG_Player.Items.Add(_Player[CB_Select_Player.SelectedIndex]);
+                    TB_Update.Text = $" {CB_Select_Player.Text} got a kill, total kills: {_Player[CB_Select_Player.SelectedIndex].Kills}";
                 }
 
                 else
@@ -128,7 +157,7 @@ namespace DemoGridView
                 }
             }
 
-            //DG_Player.Items.Refresh();
+            DG_Player.Items.Refresh();
         }
 
         private void Player_GetDeath_Click(object sender, RoutedEventArgs e)
@@ -144,10 +173,33 @@ namespace DemoGridView
                 if ((_Player[CB_Select_Player.SelectedIndex].Kills != 0) || (_Player[CB_Select_Player.SelectedIndex].Deaths != 0))
                 {
                     CalculateKD(_Player[CB_Select_Player.SelectedIndex].Deaths, _Player[CB_Select_Player.SelectedIndex].Kills);
+                    TB_Update.Text = $" {CB_Select_Player.Text} died, total deaths: {_Player[CB_Select_Player.SelectedIndex].Deaths}";
                 }
             }
             DG_Player.Items.Refresh();
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int tempIx = CB_Coach_Timeout.SelectedIndex;
+            if (_Coach[tempIx].TacticalTimeouts > 0) 
+                 {
+                     _Coach[tempIx].TacticalTimeouts--;
+                     TB_Coach_Timeout.Text = $" Timeout called by {_Coach[tempIx].MemberInGameName}, Using Timeout. 30 seconds";
+                      DG_Coach.Items.Refresh();
+                 }
+            else
+            {
+                TB_Coach_Timeout.Text = $" Timeout called by {_Coach[tempIx].MemberInGameName}, No Timeouts left";
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var newForm = new MainWindow();
+            newForm.Show();
+            this.Close();
         }
     }
 }

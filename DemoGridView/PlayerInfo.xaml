@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="PlayerInfo" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="DG_Player" Margin="0,0,0,275">
+        <DataGrid x:Name="DG_Player" IsReadOnly="true" Margin="0,0,0,275">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Player Name" Binding="{Binding MemberInGameName}" Width="*"/>
                 <DataGridTextColumn Header="Player Kills" Binding="{Binding Kills}" Width="*"/>
@@ -19,5 +19,17 @@
         <Button x:Name="Player_GetKill" Content="Get Kill" HorizontalAlignment="Left" Margin="157,165,0,0" VerticalAlignment="Top" Click="Player_GetKill_Click"/>
         <Button x:Name="Player_GetDeath" Content="Get Death" HorizontalAlignment="Left" Margin="227,165,0,0" VerticalAlignment="Top" Click="Player_GetDeath_Click"/>
         <TextBlock x:Name="TB_PlayerMessage" HorizontalAlignment="Left" Margin="332,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <DataGrid x:Name="DG_Coach" IsReadOnly="true" Margin="0,241,0,80">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Coach Team " Binding="{Binding TeamName}" Width="*"/>
+                <DataGridTextColumn Header="Coach in game name" Binding="{Binding MemberInGameName}" Width="*"/>
+                <DataGridTextColumn Header="Team Tactical Timeouts" Binding="{Binding TacticalTimeouts}"  Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock x:Name="TB_Update" HorizontalAlignment="Left" Margin="10,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <ComboBox x:Name="CB_Coach_Timeout" HorizontalAlignment="Left" Margin="10,359,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Start Timeout " HorizontalAlignment="Left" Margin="157,361,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBlock x:Name="TB_Coach_Timeout" HorizontalAlignment="Left" Margin="10,386,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button Content="Go Back" HorizontalAlignment="Left" Margin="692,361,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click_1"/>
     </Grid>
 </Window>
