@@ -1,0 +1,35 @@
+Deze applicatie is een beheerapplicatie voor de (e-)sport voor een computerspel Counter Strike 
+Dit is een schiet spel waarin teams, die bestaat uit spelers en een coach, het tegen elkaar opnemen.
+Iedereen in een team heeft een naam, een leeftijd, en een in game name (Alias in het spel) 
+
+Het doel van het spel is om de tegenstanders dood te schieten in het spel. 
+De spelers kunnen dus kills krijgen, of doodgeschoten worden. 
+Tijdens het spelen wordt een KD ratio bijgehouden, dit is het gemiddeld aantal kills die je krijgt per keer dat je dood gaat 
+Formule: KD =  (Kills / Deaths)
+
+Coaches kunnen tijdens het spel een timeout oproepen, maximaal 4 per spel, om het team tijd te geven om iets te bespreken.
+
+Meer informatie: https://en.wikipedia.org/wiki/Counter-Strike:_Global_Offensive
+
+Teams gebruikt: 
+https://en.wikipedia.org/wiki/Astralis
+https://en.wikipedia.org/wiki/Natus_Vincere
+https://en.wikipedia.org/wiki/Ninjas_in_Pyjamas
+
+
+De applicatie begint in de Main Window, hier zijn de CRUD mogelijkheden voor een team. 
+Er zijn vanaf hier tw ee knoppen: 
+1. Teammember Info 
+Hier zijn de spelers van de teams in te zien, met de verdere CRUD mogelijkheden
+
+2. Player Info
+Dit is een simulatie van het spel zelf. 
+Spelers: Krijgen Kills of Deaths, KD wordt berekend per keer
+Coach: Roept een timeout, met een maximum van 4. 
+
+
+
+
+ 
+
+
