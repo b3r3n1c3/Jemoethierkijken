@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joffrey\\source\\repos\\DemoGridView\\Jemoethierkijken\\DemoGridView\\DemoGridView.csproj": {}
+    "C:\\Users\\Joffrey\\source\\repos\\InzendOpgave2\\Inzendopgave_294C1_Student_123917735\\Jemoethierkijken\\DemoGridView\\DemoGridView.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joffrey\\source\\repos\\DemoGridView\\Jemoethierkijken\\DemoGridView\\DemoGridView.csproj": {
+    "C:\\Users\\Joffrey\\source\\repos\\InzendOpgave2\\Inzendopgave_294C1_Student_123917735\\Jemoethierkijken\\DemoGridView\\DemoGridView.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joffrey\\source\\repos\\DemoGridView\\Jemoethierkijken\\DemoGridView\\DemoGridView.csproj",
+        "projectUniqueName": "C:\\Users\\Joffrey\\source\\repos\\InzendOpgave2\\Inzendopgave_294C1_Student_123917735\\Jemoethierkijken\\DemoGridView\\DemoGridView.csproj",
         "projectName": "DemoGridView",
-        "projectPath": "C:\\Users\\Joffrey\\source\\repos\\DemoGridView\\Jemoethierkijken\\DemoGridView\\DemoGridView.csproj",
+        "projectPath": "C:\\Users\\Joffrey\\source\\repos\\InzendOpgave2\\Inzendopgave_294C1_Student_123917735\\Jemoethierkijken\\DemoGridView\\DemoGridView.csproj",
         "packagesPath": "C:\\Users\\Joffrey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joffrey\\source\\repos\\DemoGridView\\Jemoethierkijken\\DemoGridView\\obj\\",
+        "outputPath": "C:\\Users\\Joffrey\\source\\repos\\InzendOpgave2\\Inzendopgave_294C1_Student_123917735\\Jemoethierkijken\\DemoGridView\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

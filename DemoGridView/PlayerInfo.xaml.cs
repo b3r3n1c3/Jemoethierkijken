@@ -25,68 +25,44 @@ namespace DemoGridView
             InitializeComponent();
 
             // Declare teams 
-            Team Navi = new Team();
-            Navi.TeamName = "Natus Vincere";
-            Navi.StartYear = 2009;
-
-            Team Nip = new Team();
-            Nip.TeamName = "Ninjas in Pyjama's";
-            Nip.StartYear = 2000;
-
-            Team Astralis = new Team();
-            Astralis.TeamName = "Astralis";
-            Astralis.StartYear = 2016;
+            Team Navi = new Team("Natus Vincere", 2009);
+            Team Nip = new Team("Ninjas in Pyjama's", 2000);
+            Team Astralis = new Team("Astralis", 2016);
 
             // Declare TeamMembers 
-            TeamMember Simple = new TeamMember();
-            Simple.Team = Navi;
-            Simple.MemberName = "Oleksandr Kostyliev";
-            Simple.MemberAge = 24;
-            Simple.MemberInGameName = "S1mple";
-
-            TeamMember GetRight = new TeamMember();
-            GetRight.Team = Nip;
-            GetRight.MemberName = "Christopher Alesund";
-            GetRight.MemberAge = 31;
-            GetRight.MemberInGameName = "GeT_RiGhT";
-
-            TeamMember Device = new TeamMember();
-            Device.Team = Astralis;
-            Device.MemberName = "Nicolai Hvilshøj Reedtz";
-            Device.MemberAge = 26;
-            Device.MemberInGameName = "dev1ce";
+            TeamMember Simple = new TeamMember("Oleksandr Kostyliev", 24, "S1mple", Navi);
+            TeamMember GetRight = new TeamMember("Christopher Alesund", 31, "GeT_RiGhT", Nip);
+            TeamMember Device = new TeamMember("Nicolai Hvilshøj Reedtz", 26, "dev1ce", Astralis);
 
             // Declare Players 
-            Player S1mple = new Player();
+            Player S1mple = new Player(0, 0, 0.00F, Simple, Navi);
             S1mple.MemberInGameName = Simple.MemberInGameName;
-            S1mple.Kills = 0;
-            S1mple.Deaths = 0;
-            S1mple.KD = 0.00F;
 
-            Player Get_Right = new Player();
+
+            Player Get_Right = new Player(0, 0, 0.00F, GetRight, Nip);
             Get_Right.MemberInGameName = GetRight.MemberInGameName;
             Get_Right.Kills = 0;
             Get_Right.Deaths = 0;
             Get_Right.KD = 0.00F;
 
-            Player Dev1ce = new Player();
+            Player Dev1ce = new Player(0, 0, 0.00F, Device, Astralis);
             Dev1ce.MemberInGameName = Device.MemberInGameName;
             Dev1ce.Kills = 0;
             Dev1ce.Deaths = 0;
             Dev1ce.KD = 0.00F;
 
             // Declare Coaches 
-            Coach Threat = new Coach();
+            Coach Threat = new Coach(4, GetRight, Nip);
             Threat.MemberInGameName = "THREAT";
             Threat.TeamName = Nip.TeamName;
             Threat.TacticalTimeouts = 4;
 
-            Coach Glave = new Coach();
+            Coach Glave = new Coach(4, Dev1ce, Astralis);
             Glave.MemberInGameName = "gla1ve";
             Glave.TeamName = Astralis.TeamName;
             Glave.TacticalTimeouts = 4;
 
-            Coach Blade = new Coach();
+            Coach Blade = new Coach(4, Simple, Navi);
             Blade.MemberInGameName = "B1ad3";
             Blade.TeamName = Navi.TeamName;
             Blade.TacticalTimeouts = 4; 

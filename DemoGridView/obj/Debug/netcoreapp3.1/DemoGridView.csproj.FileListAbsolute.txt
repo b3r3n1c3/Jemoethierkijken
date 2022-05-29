@@ -64,3 +64,27 @@ C:\Users\Ned J\Documents\GitHub\Jemoethierkijken\DemoGridView\obj\Debug\netcorea
 C:\Users\Ned J\Documents\GitHub\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.genruntimeconfig.cache
 C:\Users\Joffrey\source\repos\DemoGridView\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\PlayerInfo.g.cs
 C:\Users\Joffrey\source\repos\DemoGridView\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\PlayerInfo.baml
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\PlayerInfo.g.cs
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\TeamInfo.g.cs
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView_MarkupCompile.cache
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView_MarkupCompile.lref
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.csproj.AssemblyReference.cache
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\bin\Debug\netcoreapp3.1\DemoGridView.exe
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\bin\Debug\netcoreapp3.1\DemoGridView.deps.json
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\bin\Debug\netcoreapp3.1\DemoGridView.runtimeconfig.json
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\bin\Debug\netcoreapp3.1\DemoGridView.runtimeconfig.dev.json
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\bin\Debug\netcoreapp3.1\DemoGridView.dll
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\bin\Debug\netcoreapp3.1\DemoGridView.pdb
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\PlayerInfo.baml
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\TeamInfo.baml
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.g.resources
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.AssemblyInfoInputs.cache
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.AssemblyInfo.cs
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.csproj.CoreCompileInputs.cache
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.dll
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.pdb
+C:\Users\Joffrey\source\repos\InzendOpgave2\Inzendopgave_294C1_Student_123917735\Jemoethierkijken\DemoGridView\obj\Debug\netcoreapp3.1\DemoGridView.genruntimeconfig.cache

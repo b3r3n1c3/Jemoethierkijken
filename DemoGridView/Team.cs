@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace DemoGridView
 {
@@ -8,14 +9,15 @@ namespace DemoGridView
     {
         public string TeamName { get; set; }
         public int StartYear { get; set; }
+        protected string RandomIndex;
 
-        /*
-        public override string ToString()
+        public Team(string TName, int TYear)
         {
-            return base.ToString() + ": " + TeamName.ToString();
-        }
-        */
-
+            TeamName = TName;
+            StartYear= TYear;
+            Guid x = Guid.NewGuid();
+            RandomIndex = x.ToString();
+    }
 
     }
 

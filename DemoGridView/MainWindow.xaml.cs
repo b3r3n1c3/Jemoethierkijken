@@ -27,44 +27,29 @@ namespace DemoGridView
             // Create a new Team Record 
             // Instatiate a new Team Record and give it information
             // Add Some Details about Team
-            Team Navi = new Team();
-            Navi.TeamName = "Natus Vincere";
-            Navi.StartYear = 2009;
 
-            Team Nip = new Team();
-            Nip.TeamName = "Ninjas in Pyjama's";
-            Nip.StartYear = 2000;
+            SingletonTeam SingletonInstance = SingletonTeam.GetInstance();
+            List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
 
-            Team Astralis = new Team();
-            Astralis.TeamName = "Astralis";
-            Astralis.StartYear = 2016;
+            foreach (Team i in AllTeams)
+            {
+                // Add item to datagrid
+                DataGrid1.Items.Add(i);
 
-            // Add a list with classes
-            _Team = new List<Team>();
-            _Team.Add(Navi);
-            _Team.Add(Nip);
-            _Team.Add(Astralis);
+                // Add items to Combobox for Delete (Dropdown)
+                CB1.Items.Add(i.TeamName);
 
-            //Add items to Datagrid 
-            DataGrid1.Items.Add(_Team[0]);
-            DataGrid1.Items.Add(_Team[1]);
-            DataGrid1.Items.Add(_Team[2]);
+                //Add items to combobox for Update (Dropdown)
+                CB2.Items.Add(i.TeamName);
+            }
 
-            // Add items to Combobox for Delete (Dropdown)
-            CB1.Items.Add(_Team[0].TeamName);
-            CB1.Items.Add(_Team[1].TeamName);
-            CB1.Items.Add(_Team[2].TeamName);
-
-            //Add items to combobox for Update (Dropdown)
-            CB2.Items.Add(_Team[0].TeamName);
-            CB2.Items.Add(_Team[1].TeamName);
-            CB2.Items.Add(_Team[2].TeamName);
         }
-
 
         // Add new Person button was clicked
         private void AddNewTeamButton_Clicked(object sender, RoutedEventArgs e)
         {
+            SingletonTeam SingletonInstance = SingletonTeam.GetInstance();
+
             TB_Add_Error.Text = "";
             Update_Error_SY.Text = "";
 
@@ -78,14 +63,16 @@ namespace DemoGridView
             else
             {
                 Update_Error_SY.Text = "";
-                Team tempTeam = new Team();
+
+                //Team tempTeam = new Team();
+
+                // Try to make a team, fail if incorrect year is inserted
                 try
                 {
-                    tempTeam.StartYear = int.Parse(AddStartYear.Text);
-                    tempTeam.TeamName = AddTeamName.Text;
+                    Team tempTeam = new Team(AddTeamName.Text, int.Parse(AddStartYear.Text));
+                    SingletonInstance.AddTeam(tempTeam);
 
                     // Add Team To the List _Teams
-                    _Team.Add(tempTeam);
                     DataGrid1.Items.Add(tempTeam);
                     CB1.Items.Add(tempTeam.TeamName);
                     CB2.Items.Add(tempTeam.TeamName);
@@ -100,6 +87,10 @@ namespace DemoGridView
 
         private void DeleteTeamButton_Click(object sender, RoutedEventArgs e)
         {
+
+            SingletonTeam SingletonInstance = SingletonTeam.GetInstance();
+            List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
+
             // Here comes the program for deleting class instances 
             int tempIx = CB1.SelectedIndex;
 
@@ -111,10 +102,10 @@ namespace DemoGridView
 
             else
             {
-                DataGrid1.Items.Remove(_Team[tempIx]);
+                DataGrid1.Items.Remove(AllTeams[tempIx]);
                 CB2.Items.Remove(CB1.SelectedValue);
                 CB1.Items.Remove(CB1.SelectedValue);
-                _Team.RemoveAt(tempIx);
+                SingletonInstance.DeleteTeam(AllTeams[tempIx]);
                 DataGrid1.Items.Refresh();
             }
 

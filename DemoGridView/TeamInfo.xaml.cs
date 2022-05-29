@@ -24,38 +24,14 @@ namespace DemoGridView
         {
             InitializeComponent();
 
+            Team Navi = new Team("Natus Vincere", 2009);
+            Team Nip = new Team("Ninjas in Pyjama's", 2000);
+            Team Astralis = new Team("Astralis", 2016);
 
-            // Declare teams 
-            Team Navi = new Team();
-            Navi.TeamName = "Natus Vincere";
-            Navi.StartYear = 2009;
-
-            Team Nip = new Team();
-            Nip.TeamName = "Ninjas in Pyjama's";
-            Nip.StartYear = 2000;
-
-            Team Astralis = new Team();
-            Astralis.TeamName = "Astralis";
-            Astralis.StartYear = 2016;
-            
             // Declare TeamMembers 
-            TeamMember Simple = new TeamMember();
-            Simple.Team = Navi;
-            Simple.MemberName = "Oleksandr Kostyliev";
-            Simple.MemberAge = 24;
-            Simple.MemberInGameName = "S1mple";
-
-            TeamMember GetRight = new TeamMember();
-            GetRight.Team = Nip;
-            GetRight.MemberName = "Christopher Alesund";
-            GetRight.MemberAge = 31;
-            GetRight.MemberInGameName = "GeT_RiGhT";
-
-            TeamMember Device = new TeamMember();
-            Device.Team = Astralis;
-            Device.MemberName = "Nicolai Hvilshøj Reedtz";
-            Device.MemberAge = 26;
-            Device.MemberInGameName = "dev1ce";
+            TeamMember Simple = new TeamMember("Oleksandr Kostyliev", 24, "S1mple", Navi);
+            TeamMember GetRight = new TeamMember("Christopher Alesund", 31, "GeT_RiGhT", Nip);
+            TeamMember Device = new TeamMember("Nicolai Hvilshøj Reedtz", 26, "dev1ce", Astralis);
 
             // Create list of Teammembers Classes
             _Teammember = new List<TeamMember>();
@@ -96,7 +72,7 @@ namespace DemoGridView
             TB_Add_Error.Text = "";
 
             // This is the code for adding a Teammember
-            TeamMember tempTeammember = new TeamMember();
+
 
             // See if Team is Selected 
             if (string.IsNullOrEmpty(CB_Add_TN.Text))
@@ -129,10 +105,7 @@ namespace DemoGridView
                         try
                         {
                             int tempInt = CB_Add_TN.SelectedIndex;
-                            tempTeammember.Team = _Team[tempInt];
-                            tempTeammember.MemberName = TBox_Add_MN.Text;
-                            tempTeammember.MemberAge = int.Parse(TBox_Add_Age.Text);
-                            tempTeammember.MemberInGameName = TBox_Add_IGN.Text;
+                            TeamMember tempTeammember = new TeamMember(TBox_Add_MN.Text, int.Parse(TBox_Add_Age.Text), TBox_Add_IGN.Text, _Team[tempInt]);
 
                             // Add Teammember To the List _Teammembers
                             _Teammember.Add(tempTeammember);
