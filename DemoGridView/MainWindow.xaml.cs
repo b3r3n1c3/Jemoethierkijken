@@ -108,7 +108,7 @@ namespace DemoGridView
                 SingletonInstance.DeleteTeam(AllTeams[tempIx]);
                 DataGrid1.Items.Refresh();
             }
-
+//AAAAAAAAAAAAA
 
         }
 
