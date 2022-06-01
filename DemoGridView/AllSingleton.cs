@@ -58,9 +58,10 @@ namespace DemoGridView
             _Player.Add(Dev1ce);
 
             // Declare Coaches 
+            Coach Blade = new Coach(4, CBlade, Navi);
             Coach Threat = new Coach(4, CThreat, Nip);
             Coach Trace = new Coach(4, CTrace, Astralis);
-            Coach Blade = new Coach(4, CBlade, Navi);
+
 
             //Add item to List Coach
             _Coach = new List<Coach>();
@@ -119,6 +120,47 @@ namespace DemoGridView
         }
 
 
+        // Method for updating Team (And/Or TeamYear and Team Name)
+        public void EditTeam(Team TTeam, string TName, int TYear)
+        {
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
+            List<TeamMember> AllTeammembers = SingletonInstance.GetSingletonTeamMemberList();
+            List<Coach> AllCoaches = SingletonInstance.GetSingletonCoachList();
+
+            TTeam.TeamName = TName;
+            TTeam.StartYear = TYear;
+
+            // Update team name
+            TTeam.TeamName = TName;
+            foreach (TeamMember i in AllTeammembers)
+            {
+                if (i.TeamName == TTeam.ToString())
+                {
+                    i.TeamName = TTeam.ToString();
+                }
+            }
+
+            foreach (Coach i in AllCoaches)
+            {
+                if (i.TeamName == TTeam.TeamName.ToString())
+                {
+                    i.TeamName = TTeam.ToString();
+                }
+            }
+
+            // Update team year 
+            TTeam.TeamName = TName;
+            TTeam.StartYear = TYear;
+            foreach (TeamMember i in AllTeammembers)
+            {
+                if (i.TeamName == TTeam.ToString())
+                {
+                    i.StartYear = TYear;
+                }
+            }
+
+        }
+
         //Method for updating team year 
         public void EditTeamYear(Team TTeam, string TName, int TYear)
         {
@@ -134,8 +176,6 @@ namespace DemoGridView
                     i.StartYear = TYear;
                 }
             }
-
-
         }
 
 

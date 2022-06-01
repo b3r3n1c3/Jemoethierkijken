@@ -30,6 +30,7 @@ namespace DemoGridView
             AllSingleton SingletonInstance = AllSingleton.GetInstance();
             List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
             List<TeamMember> AllTeamMembers = SingletonInstance.GetSingletonTeamMemberList();
+            List<Coach> AllCoaches = SingletonInstance.GetSingletonCoachList();
 
             foreach (Team i in AllTeams)
             {
@@ -84,6 +85,8 @@ namespace DemoGridView
                     Update_Error_SY.Text = "Not a valid year inserted";
                 }
             }
+            //Refresh items
+            DataGrid1.Items.Refresh();
         }
 
         private void DeleteTeamButton_Click(object sender, RoutedEventArgs e)
@@ -91,6 +94,7 @@ namespace DemoGridView
             AllSingleton SingletonInstance = AllSingleton.GetInstance();
             List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
             List<TeamMember> AllTeamMembers = SingletonInstance.GetSingletonTeamMemberList();
+
 
             // Here comes the program for deleting class instances 
             int tempIx = CB1.SelectedIndex;
@@ -133,6 +137,7 @@ namespace DemoGridView
             AllSingleton SingletonInstance = AllSingleton.GetInstance();
             List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
             List<TeamMember> AllTeamMembers = SingletonInstance.GetSingletonTeamMemberList();
+            List<Coach> AllCoaches = SingletonInstance.GetSingletonCoachList();
 
             Update_Error_TN.Text = "";
             Update_Error_SY.Text = "";
@@ -146,48 +151,36 @@ namespace DemoGridView
             }
             else
             {
-
                 // Check if Year is inserted
                 if (string.IsNullOrEmpty(TB_Update_SY.Text))
                 {
                     Update_Error_SY.Text = "No year inserted,  start year not updated";
-                }
 
-                else
-                {
-                    // Update Team year
-;
-                    // Check for valid value (int)
-                    try
+                    // Check if name is inserted
+                    if (string.IsNullOrEmpty(TB_Update_TN.Text))
                     {
-                      SingletonInstance.EditTeamYear(AllTeams[tempIx],CB2.Text, int.Parse(TB_Update_SY.Text));
+                        // Both values are empty, no changes made 
+                        Update_Error_TN.Text = "No changes made.";
                     }
 
-                    catch
+                    else
                     {
-                        Update_Error_SY.Text = "Not a valid year inserted.";
-                    }                  
+                        try
+                        {
+                            // Name inserted, no year. Update TeamName 
+                            //Adjust Teammembers 
+                            AllTeamMembers[tempIx].TeamName = TB_Update_TN.Text;
+                            // Adjust Team
+                            AllTeams[tempIx].TeamName = TB_Update_TN.Text;
 
+                            
+                            SingletonInstance.EditTeamName(AllTeams[tempIx], TB_Update_TN.Text);
+                        }
 
-                }
-
-                // Hier moet een try catch, methode Edit team name aanpassen naar Edit team waarin hij kijkt naar beide TeamName en Start year 
-
-                // Check if Name is inserted
-                if (string.IsNullOrEmpty(TB_Update_TN.Text))
-                {
-                    Update_Error_TN.Text = "No name inserted, Team Name not update";
-                }
-                else
-                {
-                    // Update Team Name 
-                    //int tempIx = CB2.SelectedIndex;
-
-                    // Hier moet een try catch 
-                    try
-                    {
-                        SingletonInstance.EditTeamName(AllTeamMembers[tempIx], TB_Update_TN.Text);
-                        AllTeams[tempIx].TeamName = TB_Update_TN.Text;
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            Update_Error_TN.Text = "IDK";
+                        }
 
                         // Remove from Delete Drop down menu, specified index
                         CB1.Items.Remove(CB2.SelectedValue);
@@ -196,20 +189,77 @@ namespace DemoGridView
                         //Remove from update Drop down menu, specified index 
                         CB2.Items.Remove(CB2.SelectedValue);
                         CB2.Items.Insert(tempIx, AllTeams[tempIx].TeamName);
-                    }
 
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        Update_Error_TN.Text = "Error, Team Name not updated";
+                        //Refresh Values
+                        DataGrid1.Items.Refresh();
                     }
                 }
 
+                else // Team Year is inserted
+                {
+                    // Check if Name is inserted
+                    if (string.IsNullOrEmpty(TB_Update_TN.Text))
+                    {
+                        Update_Error_TN.Text = "No name inserted, Team Name not update";
+
+                        try
+                        {   
+                            SingletonInstance.EditTeamYear(AllTeams[tempIx], CB2.Text, int.Parse(TB_Update_SY.Text));
+                        }
+                        catch
+                        {
+                            Update_Error_SY.Text = "Not a valid year inserted.";
+                        }
+
+                        // Remove from Delete Drop down menu, specified index
+                        CB1.Items.Remove(CB2.SelectedValue);
+                        CB1.Items.Insert(tempIx, AllTeams[tempIx].TeamName);
+
+                        //Remove from update Drop down menu, specified index 
+                        CB2.Items.Remove(CB2.SelectedValue);
+                        CB2.Items.Insert(tempIx, AllTeams[tempIx].TeamName);
+
+                        //Refresh Values
+                        DataGrid1.Items.Refresh();
+
+                    }
+
+                    else
+                    {
+                        try
+                        {
+                            //Adjust Teammembers 
+                            AllTeamMembers[tempIx].TeamName = TB_Update_TN.Text;
+                            // Adjust Team
+                            AllTeams[tempIx].TeamName = TB_Update_TN.Text;
+
+                            SingletonInstance.EditTeam(AllTeams[tempIx], TB_Update_TN.Text, int.Parse(TB_Update_SY.Text));
+                        }
+
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            Update_Error_TN.Text = "Error, Team Name not updated";
+                        }
+
+                        // Remove from Delete Drop down menu, specified index
+                        CB1.Items.Remove(CB2.SelectedValue);
+                        CB1.Items.Insert(tempIx, AllTeams[tempIx].TeamName);
+
+                        //Remove from update Drop down menu, specified index 
+                        CB2.Items.Remove(CB2.SelectedValue);
+                        CB2.Items.Insert(tempIx, AllTeams[tempIx].TeamName);
+
+                        //Refresh Values
+                        DataGrid1.Items.Refresh();
+                    }
+
+                }
                 //Refresh Values
                 DataGrid1.Items.Refresh();
-
             }
 
-
+            //Refresh Values
+            DataGrid1.Items.Refresh();
         }
 
         private void AddTeamName_TextChanged(object sender, TextChangedEventArgs e)
