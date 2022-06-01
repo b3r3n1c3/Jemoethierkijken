@@ -137,6 +137,8 @@ namespace DemoGridView
             Update_Error_TN.Text = "";
             Update_Error_SY.Text = "";
 
+            int tempIx = CB2.SelectedIndex;
+
             // Check if team is selected in Combobox
             if (string.IsNullOrEmpty(CB2.Text))
             {
@@ -154,7 +156,7 @@ namespace DemoGridView
                 else
                 {
                     // Update Team year
-                    int tempIx = CB2.SelectedIndex;
+;
                     // Check for valid value (int)
                     try
                     {
@@ -169,6 +171,8 @@ namespace DemoGridView
 
                 }
 
+                // Hier moet een try catch, methode Edit team name aanpassen naar Edit team waarin hij kijkt naar beide TeamName en Start year 
+
                 // Check if Name is inserted
                 if (string.IsNullOrEmpty(TB_Update_TN.Text))
                 {
@@ -177,17 +181,27 @@ namespace DemoGridView
                 else
                 {
                     // Update Team Name 
-                    int tempIx = CB2.SelectedIndex;
-                    SingletonInstance.EditTeamName(AllTeamMembers[tempIx], TB_Update_TN.Text);
-                    AllTeams[tempIx].TeamName = TB_Update_TN.Text;
+                    //int tempIx = CB2.SelectedIndex;
 
-                    // Remove from Delete Drop down menu, specified index
-                    CB1.Items.Remove(CB2.SelectedValue);
-                    CB1.Items.Insert(tempIx, AllTeams[tempIx].TeamName);
+                    // Hier moet een try catch 
+                    try
+                    {
+                        SingletonInstance.EditTeamName(AllTeamMembers[tempIx], TB_Update_TN.Text);
+                        AllTeams[tempIx].TeamName = TB_Update_TN.Text;
 
-                    //Remove from update Drop down menu, specified index 
-                    CB2.Items.Remove(CB2.SelectedValue);
-                    CB2.Items.Insert(tempIx, AllTeams[tempIx].TeamName);
+                        // Remove from Delete Drop down menu, specified index
+                        CB1.Items.Remove(CB2.SelectedValue);
+                        CB1.Items.Insert(tempIx, AllTeams[tempIx].TeamName);
+
+                        //Remove from update Drop down menu, specified index 
+                        CB2.Items.Remove(CB2.SelectedValue);
+                        CB2.Items.Insert(tempIx, AllTeams[tempIx].TeamName);
+                    }
+
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        Update_Error_TN.Text = "Error, Team Name not updated";
+                    }
                 }
 
                 //Refresh Values

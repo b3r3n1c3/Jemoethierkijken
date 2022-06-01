@@ -32,7 +32,6 @@ namespace DemoGridView
             _Team.Add(Nip);
             _Team.Add(Astralis);
 
-
             // Declare TeamMembers 
             TeamMember Simple = new TeamMember("Oleksandr Kostyliev", 24, "S1mple", Navi);
             TeamMember GetRight = new TeamMember("Christopher Alesund", 31, "GeT_RiGhT", Nip);
@@ -99,8 +98,6 @@ namespace DemoGridView
             AllSingleton SingletonInstance = AllSingleton.GetInstance();
             List<TeamMember> AllTeammembers = SingletonInstance.GetSingletonTeamMemberList();
             List<Coach> AllCoaches = SingletonInstance.GetSingletonCoachList();
-
-
 
             // Update team name
             TTeam.TeamName = TName;
