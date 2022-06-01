@@ -17,6 +17,7 @@ namespace DemoGridView
     /// </summary>
     public partial class PlayerInfo : Window
     {
+        public List<TeamMember> _Teammember;
         public List<Player> _Player;
         public List<Coach> _Coach;
 
@@ -24,93 +25,38 @@ namespace DemoGridView
         {
             InitializeComponent();
 
-            // Declare teams 
-            Team Navi = new Team("Natus Vincere", 2009);
-            Team Nip = new Team("Ninjas in Pyjama's", 2000);
-            Team Astralis = new Team("Astralis", 2016);
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
+            List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
+            List<TeamMember> AllTeamMembers = SingletonInstance.GetSingletonTeamMemberList();
+            List<Player> AllPlayers = SingletonInstance.GetSingletonPlayerList();
+            List<Coach> AllCoaches = SingletonInstance.GetSingletonCoachList();
 
-            // Declare TeamMembers 
-            TeamMember Simple = new TeamMember("Oleksandr Kostyliev", 24, "S1mple", Navi);
-            TeamMember GetRight = new TeamMember("Christopher Alesund", 31, "GeT_RiGhT", Nip);
-            TeamMember Device = new TeamMember("Nicolai Hvilshøj Reedtz", 26, "dev1ce", Astralis);
+            foreach (Player i in AllPlayers)
+            {
+                DG_Player.Items.Add(i);
+                CB_Select_Player.Items.Add(i.MemberInGameName);
+            }
 
-            // Declare Players 
-            Player S1mple = new Player(0, 0, 0.00F, Simple, Navi);
-            S1mple.MemberInGameName = Simple.MemberInGameName;
+            foreach (Coach i in AllCoaches)
+            {
+                DG_Coach.Items.Add(i);
+                CB_Coach_Timeout.Items.Add(i.MemberInGameName);
+            }
 
-
-            Player Get_Right = new Player(0, 0, 0.00F, GetRight, Nip);
-            Get_Right.MemberInGameName = GetRight.MemberInGameName;
-            Get_Right.Kills = 0;
-            Get_Right.Deaths = 0;
-            Get_Right.KD = 0.00F;
-
-            Player Dev1ce = new Player(0, 0, 0.00F, Device, Astralis);
-            Dev1ce.MemberInGameName = Device.MemberInGameName;
-            Dev1ce.Kills = 0;
-            Dev1ce.Deaths = 0;
-            Dev1ce.KD = 0.00F;
-
-            // Declare Coaches 
-            Coach Threat = new Coach(4, GetRight, Nip);
-            Threat.MemberInGameName = "THREAT";
-            Threat.TeamName = Nip.TeamName;
-            Threat.TacticalTimeouts = 4;
-
-            Coach Glave = new Coach(4, Dev1ce, Astralis);
-            Glave.MemberInGameName = "gla1ve";
-            Glave.TeamName = Astralis.TeamName;
-            Glave.TacticalTimeouts = 4;
-
-            Coach Blade = new Coach(4, Simple, Navi);
-            Blade.MemberInGameName = "B1ad3";
-            Blade.TeamName = Navi.TeamName;
-            Blade.TacticalTimeouts = 4; 
-
-
-            //Add item to List Player 
-            _Player = new List<Player>();
-            _Player.Add(S1mple);
-            _Player.Add(Get_Right);
-            _Player.Add(Dev1ce);
-
-            //Add item to List Coach
-            _Coach = new List<Coach>();
-            _Coach.Add(Threat);
-            _Coach.Add(Glave);
-            _Coach.Add(Blade);
-
-            // Add data to Player grid 
-            DG_Player.Items.Add(_Player[0]);
-            DG_Player.Items.Add(_Player[1]);
-            DG_Player.Items.Add(_Player[2]);
-
-
-            // Add Data to Player Combobox
-            CB_Select_Player.Items.Add(_Player[0].MemberInGameName);
-            CB_Select_Player.Items.Add(_Player[1].MemberInGameName);
-            CB_Select_Player.Items.Add(_Player[2].MemberInGameName);
-
-            // Add data to Coach grid
-            DG_Coach.Items.Add(_Coach[0]);
-            DG_Coach.Items.Add(_Coach[1]);
-            DG_Coach.Items.Add(_Coach[2]);
-
-            // Add Data to Coach Combobox 
-            CB_Coach_Timeout.Items.Add(_Coach[0].MemberInGameName);
-            CB_Coach_Timeout.Items.Add(_Coach[1].MemberInGameName);
-            CB_Coach_Timeout.Items.Add(_Coach[2].MemberInGameName);
         }
 
         // method for calculating the KD of a player
         public void CalculateKD(float x, float y)
         {
-            _Player[CB_Select_Player.SelectedIndex].KD = y / x;
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
+            List<Player> AllPlayers = SingletonInstance.GetSingletonPlayerList();
+            AllPlayers[CB_Select_Player.SelectedIndex].KD = y / x;
         }
 
         private void Player_GetKill_Click(object sender, RoutedEventArgs e)
-
         {
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
+            List<Player> AllPlayers = SingletonInstance.GetSingletonPlayerList();
             TB_PlayerMessage.Text = "";
 
             if (string.IsNullOrEmpty(CB_Select_Player.Text))
@@ -119,12 +65,12 @@ namespace DemoGridView
             }
             else
             {
-                _Player[CB_Select_Player.SelectedIndex].Kills++;
+                AllPlayers[CB_Select_Player.SelectedIndex].Kills++;
 
-                if ((_Player[CB_Select_Player.SelectedIndex].Kills != 0) || (_Player[CB_Select_Player.SelectedIndex].Deaths != 0))
+                if ((AllPlayers[CB_Select_Player.SelectedIndex].Kills != 0) || (AllPlayers[CB_Select_Player.SelectedIndex].Deaths != 0))
                 {
-                    CalculateKD(_Player[CB_Select_Player.SelectedIndex].Deaths, _Player[CB_Select_Player.SelectedIndex].Kills);
-                    TB_Update.Text = $" {CB_Select_Player.Text} got a kill, total kills: {_Player[CB_Select_Player.SelectedIndex].Kills}";
+                    CalculateKD(AllPlayers[CB_Select_Player.SelectedIndex].Deaths, AllPlayers[CB_Select_Player.SelectedIndex].Kills);
+                    TB_Update.Text = $" {CB_Select_Player.Text} got a kill, total kills: {AllPlayers[CB_Select_Player.SelectedIndex].Kills}";
                 }
 
                 else
@@ -136,20 +82,23 @@ namespace DemoGridView
             DG_Player.Items.Refresh();
         }
 
+        // Method for adding a Death
         private void Player_GetDeath_Click(object sender, RoutedEventArgs e)
         {
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
+            List<Player> AllPlayers = SingletonInstance.GetSingletonPlayerList();
             if (string.IsNullOrEmpty(CB_Select_Player.Text))
             {
                 TB_PlayerMessage.Text = "No player selected.";
             }
             else
             {
-                _Player[CB_Select_Player.SelectedIndex].Deaths++;
+                AllPlayers[CB_Select_Player.SelectedIndex].Deaths++;
 
-                if ((_Player[CB_Select_Player.SelectedIndex].Kills != 0) || (_Player[CB_Select_Player.SelectedIndex].Deaths != 0))
+                if ((AllPlayers[CB_Select_Player.SelectedIndex].Kills != 0) || (AllPlayers[CB_Select_Player.SelectedIndex].Deaths != 0))
                 {
-                    CalculateKD(_Player[CB_Select_Player.SelectedIndex].Deaths, _Player[CB_Select_Player.SelectedIndex].Kills);
-                    TB_Update.Text = $" {CB_Select_Player.Text} died, total deaths: {_Player[CB_Select_Player.SelectedIndex].Deaths}";
+                    CalculateKD(AllPlayers[CB_Select_Player.SelectedIndex].Deaths, AllPlayers[CB_Select_Player.SelectedIndex].Kills);
+                    TB_Update.Text = $" {CB_Select_Player.Text} died, total deaths: {AllPlayers[CB_Select_Player.SelectedIndex].Deaths}";
                 }
             }
             DG_Player.Items.Refresh();
@@ -158,16 +107,18 @@ namespace DemoGridView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
+            List<Coach> AllCoaches = SingletonInstance.GetSingletonCoachList();
             int tempIx = CB_Coach_Timeout.SelectedIndex;
-            if (_Coach[tempIx].TacticalTimeouts > 0) 
+            if (AllCoaches[tempIx].TacticalTimeouts > 0) 
                  {
-                     _Coach[tempIx].TacticalTimeouts--;
-                     TB_Coach_Timeout.Text = $" Timeout called by {_Coach[tempIx].MemberInGameName}, Using Timeout. 30 seconds";
+                     AllCoaches[tempIx].TacticalTimeouts--;
+                     TB_Coach_Timeout.Text = $" Timeout called by {AllCoaches[tempIx].MemberInGameName}, Using Timeout. 30 seconds";
                       DG_Coach.Items.Refresh();
                  }
             else
             {
-                TB_Coach_Timeout.Text = $" Timeout called by {_Coach[tempIx].MemberInGameName}, No Timeouts left";
+                TB_Coach_Timeout.Text = $" Timeout called by {AllCoaches[tempIx].MemberInGameName}, No Timeouts left";
             }
         }
 

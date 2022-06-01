@@ -9,14 +9,12 @@ namespace DemoGridView
     {
         public string TeamName { get; set; }
         public int StartYear { get; set; }
-        protected string RandomIndex;
 
         public Team(string TName, int TYear)
         {
             TeamName = TName;
             StartYear= TYear;
-            Guid x = Guid.NewGuid();
-            RandomIndex = x.ToString();
+
     }
 
     }

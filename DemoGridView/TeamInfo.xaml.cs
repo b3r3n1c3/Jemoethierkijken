@@ -24,51 +24,37 @@ namespace DemoGridView
         {
             InitializeComponent();
 
-            Team Navi = new Team("Natus Vincere", 2009);
-            Team Nip = new Team("Ninjas in Pyjama's", 2000);
-            Team Astralis = new Team("Astralis", 2016);
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
+            List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
+            List<TeamMember> AllTeamMembers = SingletonInstance.GetSingletonTeamMemberList();
 
-            // Declare TeamMembers 
-            TeamMember Simple = new TeamMember("Oleksandr Kostyliev", 24, "S1mple", Navi);
-            TeamMember GetRight = new TeamMember("Christopher Alesund", 31, "GeT_RiGhT", Nip);
-            TeamMember Device = new TeamMember("Nicolai Hvilshøj Reedtz", 26, "dev1ce", Astralis);
 
-            // Create list of Teammembers Classes
-            _Teammember = new List<TeamMember>();
-            _Teammember.Add(Simple);
-            _Teammember.Add(GetRight);
-            _Teammember.Add(Device);
+            foreach (Team i in AllTeams)
+            {
+                // Add item to Combobox for adding teammembers
+                CB_Add_TN.Items.Add(i.TeamName);
 
-            // Add a list with Team classes
-            _Team = new List<Team>();
-            _Team.Add(Navi);
-            _Team.Add(Nip);
-            _Team.Add(Astralis);
+            }
+            foreach (TeamMember i in AllTeamMembers)
+            {
+                // Add to grid 
+                DataGrid2.Items.Add(i);
 
-            // Add to grid 
-            DataGrid2.Items.Add(_Teammember[0]);
-            DataGrid2.Items.Add(_Teammember[1]);
-            DataGrid2.Items.Add(_Teammember[2]);
 
-            // Add items to Combobox for adding teammember 
-            CB_Add_TN.Items.Add(_Team[0].TeamName);
-            CB_Add_TN.Items.Add(_Team[1].TeamName);
-            CB_Add_TN.Items.Add(_Team[2].TeamName);
+                // Add item to Combobox for deleting teammembers
+                CB_Delete_TM.Items.Add(i.MemberInGameName);
 
-            // Add items to Comboxbox for deleting teammember (showing IGN)
-            CB_Delete_TM.Items.Add(_Teammember[0].MemberInGameName);
-            CB_Delete_TM.Items.Add(_Teammember[1].MemberInGameName);
-            CB_Delete_TM.Items.Add(_Teammember[2].MemberInGameName);
-
-            // Add items to Combobox for updating teammembers (showing IGN)
-            CB_Update_TM.Items.Add(_Teammember[0].MemberInGameName);
-            CB_Update_TM.Items.Add(_Teammember[1].MemberInGameName);
-            CB_Update_TM.Items.Add(_Teammember[2].MemberInGameName);
-
+                // Add items to Combobox for updating teammembers (showing IGN)
+                CB_Update_TM.Items.Add(i.MemberInGameName);
+            }
         }
 
         private void BT_Add_TM_Click(object sender, RoutedEventArgs e)
         {
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
+            List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
+            List<TeamMember> AllTeamMembers = SingletonInstance.GetSingletonTeamMemberList();
+
             TB_Add_Error.Text = "";
 
             // This is the code for adding a Teammember
@@ -105,10 +91,10 @@ namespace DemoGridView
                         try
                         {
                             int tempInt = CB_Add_TN.SelectedIndex;
-                            TeamMember tempTeammember = new TeamMember(TBox_Add_MN.Text, int.Parse(TBox_Add_Age.Text), TBox_Add_IGN.Text, _Team[tempInt]);
+                            TeamMember tempTeammember = new TeamMember(TBox_Add_MN.Text, int.Parse(TBox_Add_Age.Text), TBox_Add_IGN.Text, AllTeams[tempInt]);
 
                             // Add Teammember To the List _Teammembers
-                            _Teammember.Add(tempTeammember);
+                            SingletonInstance.AddTeam(tempTeammember);
                             DataGrid2.Items.Add(tempTeammember);
 
                             // Add Teammember to Combobox for deleting Teammembers
@@ -130,6 +116,12 @@ namespace DemoGridView
 
         private void BT_Delete_TM_Click(object sender, RoutedEventArgs e)
         {
+
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
+            List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
+            List<TeamMember> AllTeamMembers = SingletonInstance.GetSingletonTeamMemberList();
+
+
             TB_Delete_error.Text = "";
             // This is the code to delete the teammember 
 
@@ -143,24 +135,34 @@ namespace DemoGridView
             else
             {
                 int tempIx = CB_Delete_TM.SelectedIndex;
-                DataGrid2.Items.Remove(_Teammember[tempIx]);
+                DataGrid2.Items.Remove(AllTeamMembers[tempIx]);
                 CB_Update_TM.Items.Remove(CB_Delete_TM.SelectedValue);
                 CB_Delete_TM.Items.Remove(CB_Delete_TM.SelectedValue);
-                _Teammember.RemoveAt(tempIx);
+                SingletonInstance.DeleteTeammember(AllTeamMembers[tempIx]);
+                DataGrid2.Items.Refresh();
             }
-       
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var newForm = new MainWindow();
             newForm.Show();
+            CB_Add_TN.Items.Refresh();
+            CB_Delete_TM.Items.Refresh();
+            CB_Update_TM.Items.Refresh();
             this.Close();
         }
 
 
         private void BT_Update_TM_Click(object sender, RoutedEventArgs e)
         {
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
+            List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
+            List<TeamMember> AllTeamMembers = SingletonInstance.GetSingletonTeamMemberList();
+            List<Player> AllPlayers = SingletonInstance.GetSingletonPlayerList();
+
+
             TB_Update_Error.Text = "";
             TB_Update_Error_Age.Text = "";
             TB_Update_Error_IGN.Text = "";
@@ -186,35 +188,13 @@ namespace DemoGridView
                 {
                     // Update Teammember Name 
                     int tempIx = CB_Update_TM.SelectedIndex;
-                    _Teammember[tempIx].MemberName = TBox_Update_MN.Text;
+                    AllTeamMembers[tempIx].MemberName = TBox_Update_MN.Text;
                     //Refresh Values
                     DataGrid2.Items.Refresh();
                 }
 
               
 
-                // Check if teammember IGN is filled 
-                if (string.IsNullOrEmpty(TBox_Update_IGN.Text))
-                {
-                    TB_Update_Error_IGN.Text = "No In Game Name inserted."; 
-                }
-
-                else
-                {
-                    // Update Teammember Ingame name 
-                    int tempIx = CB_Update_TM.SelectedIndex;
-                    _Teammember[tempIx].MemberInGameName = TBox_Update_IGN.Text;
-
-                    //Refresh Values
-                    DataGrid2.Items.Refresh();
-
-                    //Delete and insert with specified index
-                    CB_Delete_TM.Items.Remove(CB_Update_TM.SelectedValue);
-                    CB_Delete_TM.Items.Insert(tempIx, _Teammember[tempIx].MemberInGameName);
-
-                    CB_Update_TM.Items.Remove(CB_Update_TM.SelectedValue);
-                    CB_Update_TM.Items.Insert(tempIx, _Teammember[tempIx].MemberInGameName);
-                }
 
                 // Check if teammember age is filled 
                 if (string.IsNullOrEmpty(TBox_Update_Age.Text))
@@ -229,7 +209,7 @@ namespace DemoGridView
                     try
                     {
                         int tempIx = CB_Update_TM.SelectedIndex;
-                        _Teammember[tempIx].MemberAge = int.Parse(TBox_Update_Age.Text);
+                        AllTeamMembers[tempIx].MemberAge = int.Parse(TBox_Update_Age.Text);
                     }
 
                     catch
@@ -237,9 +217,35 @@ namespace DemoGridView
                         TB_Update_Error_Age.Text = "Not a valid age ";
                     }
 
+
+                }
+
+
+                // Check if teammember IGN is filled 
+                if (string.IsNullOrEmpty(TBox_Update_IGN.Text))
+                {
+                    TB_Update_Error_IGN.Text = "No In Game Name inserted.";
+                }
+
+                else
+                {
+                    // Update Teammember Ingame name 
+                    int tempIx = CB_Update_TM.SelectedIndex;
+                    SingletonInstance.UpdateTeammemberInGameName(AllPlayers[tempIx], TBox_Update_IGN.Text);
+                    AllTeamMembers[tempIx].MemberInGameName = TBox_Update_IGN.Text;
+
                     //Refresh Values
                     DataGrid2.Items.Refresh();
+
+                    //Delete and insert with specified index
+                    CB_Delete_TM.Items.Remove(CB_Update_TM.SelectedValue);
+                    CB_Delete_TM.Items.Insert(tempIx, AllTeamMembers[tempIx].MemberInGameName);
+
+                    CB_Update_TM.Items.Remove(CB_Update_TM.SelectedValue);
+                    CB_Update_TM.Items.Insert(tempIx, AllTeamMembers[tempIx].MemberInGameName);
                 }
+                //Refresh Values
+                DataGrid2.Items.Refresh();
             }
         }
     }

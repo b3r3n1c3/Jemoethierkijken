@@ -9,8 +9,8 @@
     <Grid Margin="0,0,0,129">
         <DataGrid x:Name="DataGrid2" HorizontalAlignment="Center" Height="246" VerticalAlignment="Top" Width="780" Margin="0,10,0,0"  IsReadOnly="true" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Team Name" Binding="{Binding Team.TeamName}" Width="*"/>
-                <DataGridTextColumn Header="Start Year" Binding="{Binding Team.StartYear}" Width="*"/>
+                <DataGridTextColumn Header="Team Name" Binding="{Binding TeamName}" Width="*"/>
+                <DataGridTextColumn Header="Start Year" Binding="{Binding StartYear}" Width="*"/>
                 <DataGridTextColumn Header="Teammember Member Name" Binding="{Binding MemberName}" Width="*"/>
                 <DataGridTextColumn Header="Teammember Age" Binding="{Binding MemberAge}" Width="*"/>
                 <DataGridTextColumn Header="In Game Name" Binding="{Binding MemberInGameName}" Width="*"/>

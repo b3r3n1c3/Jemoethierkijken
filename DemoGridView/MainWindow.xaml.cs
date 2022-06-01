@@ -19,17 +19,17 @@ namespace DemoGridView
 
     public partial class MainWindow : Window
     {
-        public List<Team> _Team;
 
-        public MainWindow()
+        public  MainWindow()
         {
             InitializeComponent();
             // Create a new Team Record 
             // Instatiate a new Team Record and give it information
             // Add Some Details about Team
 
-            SingletonTeam SingletonInstance = SingletonTeam.GetInstance();
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
             List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
+            List<TeamMember> AllTeamMembers = SingletonInstance.GetSingletonTeamMemberList();
 
             foreach (Team i in AllTeams)
             {
@@ -48,7 +48,9 @@ namespace DemoGridView
         // Add new Person button was clicked
         private void AddNewTeamButton_Clicked(object sender, RoutedEventArgs e)
         {
-            SingletonTeam SingletonInstance = SingletonTeam.GetInstance();
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
+            List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
+            List<TeamMember> AllTeamMembers = SingletonInstance.GetSingletonTeamMemberList();
 
             TB_Add_Error.Text = "";
             Update_Error_SY.Text = "";
@@ -64,18 +66,17 @@ namespace DemoGridView
             {
                 Update_Error_SY.Text = "";
 
-                //Team tempTeam = new Team();
-
                 // Try to make a team, fail if incorrect year is inserted
                 try
                 {
+                    // Add Team To the Singleton
                     Team tempTeam = new Team(AddTeamName.Text, int.Parse(AddStartYear.Text));
                     SingletonInstance.AddTeam(tempTeam);
 
-                    // Add Team To the List _Teams
+
                     DataGrid1.Items.Add(tempTeam);
                     CB1.Items.Add(tempTeam.TeamName);
-                    CB2.Items.Add(tempTeam.TeamName);
+                    CB2.Items.Add(tempTeam.TeamName);                    
                 }
 
                 catch
@@ -87,9 +88,9 @@ namespace DemoGridView
 
         private void DeleteTeamButton_Click(object sender, RoutedEventArgs e)
         {
-
-            SingletonTeam SingletonInstance = SingletonTeam.GetInstance();
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
             List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
+            List<TeamMember> AllTeamMembers = SingletonInstance.GetSingletonTeamMemberList();
 
             // Here comes the program for deleting class instances 
             int tempIx = CB1.SelectedIndex;
@@ -108,8 +109,6 @@ namespace DemoGridView
                 SingletonInstance.DeleteTeam(AllTeams[tempIx]);
                 DataGrid1.Items.Refresh();
             }
-//AAAAAAAAAAAAA
-
         }
 
         private void TeamInfoButton_Click(object sender, RoutedEventArgs e)
@@ -131,6 +130,10 @@ namespace DemoGridView
         // This is the code run when update button is pressed 
         private void UpdateTeamButton_Click(object sender, RoutedEventArgs e)
         {
+            AllSingleton SingletonInstance = AllSingleton.GetInstance();
+            List<Team> AllTeams = SingletonInstance.GetSingletonTeamList();
+            List<TeamMember> AllTeamMembers = SingletonInstance.GetSingletonTeamMemberList();
+
             Update_Error_TN.Text = "";
             Update_Error_SY.Text = "";
 
@@ -150,12 +153,12 @@ namespace DemoGridView
 
                 else
                 {
-                    // Update Team Name 
+                    // Update Team year
                     int tempIx = CB2.SelectedIndex;
                     // Check for valid value (int)
                     try
                     {
-                        _Team[tempIx].StartYear = int.Parse(TB_Update_SY.Text);
+                      SingletonInstance.EditTeamYear(AllTeams[tempIx],CB2.Text, int.Parse(TB_Update_SY.Text));
                     }
 
                     catch
@@ -175,15 +178,16 @@ namespace DemoGridView
                 {
                     // Update Team Name 
                     int tempIx = CB2.SelectedIndex;
-                    _Team[tempIx].TeamName = TB_Update_TN.Text;
+                    SingletonInstance.EditTeamName(AllTeamMembers[tempIx], TB_Update_TN.Text);
+                    AllTeams[tempIx].TeamName = TB_Update_TN.Text;
 
                     // Remove from Delete Drop down menu, specified index
                     CB1.Items.Remove(CB2.SelectedValue);
-                    CB1.Items.Insert(tempIx, _Team[tempIx].TeamName);
+                    CB1.Items.Insert(tempIx, AllTeams[tempIx].TeamName);
 
                     //Remove from update Drop down menu, specified index 
                     CB2.Items.Remove(CB2.SelectedValue);
-                    CB2.Items.Insert(tempIx, _Team[tempIx].TeamName);
+                    CB2.Items.Insert(tempIx, AllTeams[tempIx].TeamName);
                 }
 
                 //Refresh Values
